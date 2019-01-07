@@ -15,5 +15,5 @@ KVO with runtime api.
                                id oldValue,
                                id newValue) {
         // do something.
-    }];
+}];
 ```
