@@ -28,7 +28,12 @@
     self.message = [Message new];
     self.message.text = @"2";
     __weak __typeof(self) weakSelf = self;
-    [self.message ph_addObserver:self forKey:@"text" withBlock:^(id observerObject, NSString *observeredKey, id oldValue, id newValue) {
+    [self.message ph_addObserver:self
+                          forKey:@"text"
+                       withBlock:^(id observerObject,
+                                   NSString *observeredKey,
+                                   id oldValue,
+                                   id newValue) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakSelf.button setTitle:(NSString *)newValue forState:UIControlStateNormal];
         });
@@ -37,7 +42,8 @@
 
 - (void)dealloc {
     NSLog(@"dealloc");
-    [self.message ph_removeObserver:self forKey:@"text"];
+    [self.message ph_removeObserver:self
+                             forKey:@"text"];
 }
 
 - (IBAction)click:(UIButton *)sender {
